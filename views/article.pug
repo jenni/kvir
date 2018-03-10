@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 All articles ever since: #{articles.length}
+  each article in articles
+    strong #{article.title}
+    p #{article.author}
+    p #{article.description}
