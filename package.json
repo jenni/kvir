@@ -1,0 +1,17 @@
+{
+  "name": "queer",
+  "version": "1.0.0",
+  "description": "Queer news over the world",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jen",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "newsapi": "^2.2.0"
+  }
+}
