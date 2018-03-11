@@ -9,48 +9,49 @@ const articleModel = require('../services/news-service');
 const moment = require('moment');
 const newsapi = require('../secrets');
 
+class Seeder {
+  async starterSeed() {
+    const sourcePacks = await sources.createSourcePacks();
 
-const starterSeed = async () => {
-  const sourcePacks = await sources.createSourcePacks();
+    for (let pack of sourcePacks) {
+      const res = await newsapi.v2.everything(
+        {
+          sources: pack.toString(),
+          q: 'queer'
+        }
+      )
 
-  for (let pack of sourcePacks) {
-    const res = await newsapi.v2.everything(
-      {
-        sources: pack.toString(),
-        q: 'queer'
+      const articles = res.articles;
+
+      for (let article of articles) {
+        await articleModel.add(article);
       }
-    )
+    }
+  }
 
-    const articles = res.articles;
+  async seedNews() {
+    const sourcePacks = await sources.createSourcePacks();
+    const date = {
+      yesterday: moment().subtract(1, 'day').format('YYYY-MM-DD'),
+      today: moment().format('YYYY-MM-DD')
+    };
 
-    for (let article of articles) {
-      await articleModel.add(article);
+    for (let pack of sourcePacks) {
+      const res = await newsapi.v2.everything(
+        {
+          sources: pack.toString(),
+          q: 'queer',
+          from: date.today,
+          to: date.today
+        }
+      )
+      const articles = res.articles;
+
+      for (let article of articles) {
+        await articleModel.add(article);
+      }
     }
   }
 }
 
-const seedNewArticles = () => {
-  const sourcePacks = await sources.createSourcePacks();
-  const date = {
-    yesterday: moment().subtract(1, 'day').format('YYYY-MM-DD'),
-    today: moment().format('YYYY-MM-DD')
-  };
-
-  for (let pack of sourcePacks) {
-    const res = await newsapi.v2.everything(
-      {
-        sources: pack.toString(),
-        q: 'queer',
-        from: date.today,
-        to: date.today
-      }
-    )
-    const articles = res.articles;
-
-    for (let article of articles) {
-      await articleModel.add(article);
-    }
-  }
-}
-
-starterSeed();
+module.exports = Seeder;

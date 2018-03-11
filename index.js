@@ -2,13 +2,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
+const scheduler = require('node-schedule');
 require('./db/database-connection');
 
-// const Sources = require('./models/sources');
-// const News = require('./models/news');
-
-// const sources = new Sources();
-// const news = new News(sources);
+const Seeder = require('./db/seeder');
+const seeder = new Seeder();
 
 app.use(bodyParser.json());
 
@@ -27,3 +26,4 @@ app.listen(3030, () => {
   console.log('Server listening...');
 });
 
+scheduler.scheduleJob('0 0 * * *', () => { seeder.seedNews() })
