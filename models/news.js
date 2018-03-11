@@ -30,8 +30,9 @@ const saveArticles = async (file, articles) => {
 }
 
 class News {
-  constructor(sources, source, author, title, description, url, urlToImage, publishedAt) {
+  constructor(sources, id, source, author, title, description, url, urlToImage, publishedAt) {
     this.sources = sources;
+    this.id = id;
     this.source = source;
     this.author = author;
     this.title = title;
@@ -44,6 +45,7 @@ class News {
   static create(obj) {
     return new News(
       obj.sources,
+      obj.id,
       obj.source,
       obj.author,
       obj.title,
@@ -68,7 +70,18 @@ class News {
       const storage = loadArticles('./data/news.json');
       const articles = res.articles;
 
+
       for (let article of articles) {
+        const lastArticle = storage[storage.length - 1];
+        const lastArticleId = lastArticle && lastArticle.id || 0;
+
+        article.id = lastArticleId + 1;
+        // const art = Object.assign(
+        //   {},
+        //   article,
+        //   { id: lastArticleId + 1 }
+        // )
+
         storage.push(article);
       }
 
@@ -97,7 +110,16 @@ class News {
       const articles = res.articles;
 
       for (let article of articles) {
-        storage.push(article);
+        const lastArticle = storage[storage.length - 1];
+        const lastArticleId = lastArticle && lastArticle.articleId || 0;
+
+        const art = Object.assign(
+          {},
+          article,
+          { articleId: lastArticleId + 1 }
+        )
+
+        storage.push(art);
       }
 
       await saveArticles('./data/today-news.json', storage);
