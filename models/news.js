@@ -76,11 +76,6 @@ class News {
         const lastArticleId = lastArticle && lastArticle.id || 0;
 
         article.id = lastArticleId + 1;
-        // const art = Object.assign(
-        //   {},
-        //   article,
-        //   { id: lastArticleId + 1 }
-        // )
 
         storage.push(article);
       }
