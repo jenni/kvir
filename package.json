@@ -10,10 +10,12 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "mongoose": "^5.0.9",
+    "mongoose-sequence": "^4.0.1",
     "newsapi": "^2.2.0",
     "pug": "^2.0.1"
   }
