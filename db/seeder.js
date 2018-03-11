@@ -1,7 +1,7 @@
 require('./database-connection');
 const mongoose = require('mongoose');
 
-const Sources = require('../models/sources');
+const Sources = require('../models/source-model');
 const sources = new Sources();
 
 const articleModel = require('../services/news-service');

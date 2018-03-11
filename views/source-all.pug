@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 All sources ever since: #{sources.length}
+  each source in sources
+    strong #{source.title}
+    p #{source.author}
+    p #{source.description}
+    p #{source.id}

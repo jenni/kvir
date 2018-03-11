@@ -23,6 +23,6 @@ const articleSchema = new Schema({
   publishedAt: Date
 });
 
-articleSchema.plugin(AutoIncrement, { inc_field: 'id' });
+articleSchema.plugin(AutoIncrement, { inc_field: 'articleId' });
 
 module.exports = mongoose.model('Article', articleSchema);
