@@ -13,6 +13,14 @@ router.get('/all', async (req, res, next) => {
   res.render('source-all', { sources });
 });
 
+router.get('/all/:language', async (req, res, next) => {
+  const sources = await SourceService.findAll({
+    language: 'en'
+  });
+
+  res.render('source-all-lang', { sources });
+});
+
 router.get('/:sourceId', async (req, res, next) => {
   const source = await SourceService.find(req.params.sourceId);
   res.render('source-detail', { source });

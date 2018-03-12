@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 All sources in #{sources.language}: #{sources.length}
+  each source in sources
+    strong #{source.name}
+    p Description: #{source.description}
+    p Url: #{source.url}
+    p Category: #{source.category}
+    p Language: #{source.language} | #{source.country}
+    p Article titles: #{source.articles.title}

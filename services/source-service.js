@@ -1,7 +1,7 @@
 const Source = require('../models/source-model');
 
 async function findAll() {
-  return Source.find();
+  return Source.find().populate('articles');
 }
 
 async function find(sourceId) {
