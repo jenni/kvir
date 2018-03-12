@@ -4,6 +4,8 @@ const router = express.Router();
 const SourceService = require('../services/source-service');
 const ArticleService = require('../services/article-service');
 
+const SourceModel = require('../models/source-model');
+
 router.get('/', async (req, res, next) => {
   res.send(await SourceService.findAll());
 });
@@ -14,8 +16,8 @@ router.get('/all', async (req, res, next) => {
 });
 
 router.get('/all/:language', async (req, res, next) => {
-  const sources = await SourceService.findAll({
-    language: 'en'
+  const sources = await SourceModel.find({
+    language: req.params.language
   });
 
   res.render('source-all-lang', { sources });
