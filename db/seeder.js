@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Sources = require('./seeder-sources');
 const sources = new Sources();
 
-const articleService = require('../services/news-service');
+const articleService = require('../services/article-service');
 const sourceService = require('../services/source-service');
 
 const articleModel = require('../models/article-model');

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const NewsService = require('../services/news-service');
+const NewsService = require('../services/article-service');
 
 router.get('/', async (req, res, next) => {
   res.send(await NewsService.findAll());
