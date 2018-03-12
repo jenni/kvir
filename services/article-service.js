@@ -1,11 +1,11 @@
 const Article = require('../models/article-model');
 
 async function findAll() {
-  return Article.find();
+  return Article.find().populate('sources');
 }
 
 async function find(articleId) {
-  return Article.findOne({ articleId });
+  return Article.findOne({ articleId }).populate('sources');
 }
 
 async function add(article) {

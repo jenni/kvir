@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 All articles in #{articles[0].language}: #{articles.length}
+  each article in articles
+    strong #{article.title}
+    p Author: #{article.author}
+    p Description: #{article.description}
+    //- strong Language: #{article.sources.language} | #{article.sources.country}
+    p Url: #{article.url}
+    p Published: #{article.publishedAt}
+    //- p Sources: #{article.sources.name}

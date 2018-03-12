@@ -18,7 +18,7 @@ router.get('/all', async (req, res, next) => {
 router.get('/all/:language', async (req, res, next) => {
   const sources = await SourceModel.find({
     language: req.params.language
-  });
+  }).populate('articles');
 
   res.render('source-all-lang', { sources });
 });
