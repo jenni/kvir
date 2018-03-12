@@ -15,9 +15,11 @@ router.get('/all', async (req, res, next) => {
 
 router.get('/:sourceId', async (req, res, next) => {
   const source = await SourceService.find(req.params.sourceId);
-  // const prueba = await SourceService.find('1');
-  console.log('SOURCE', source)
   res.render('source-detail', { source });
+});
+
+router.get('/:sourceId/articles', async (req, res, next) => {
+  const articlesBySource = await SourceService.find()
 });
 
 router.post('/', async (req, res, next) => {

@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/all', async (req, res, next) => {
   const articles = await NewsService.findAll();
-  res.render('article-all', { articles })
+  res.render('article-all', { articles });
 });
 
 router.get('/:articleId', async (req, res, next) => {
@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/:articleId', async (req, res, next) => {
   await NewsService.del(req.params.articleId);
-  res.send('ok')
+  res.send('ok');
 });
 
 module.exports = router;

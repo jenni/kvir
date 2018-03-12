@@ -4,7 +4,12 @@ const mongoose = require('mongoose');
 const Sources = require('./seeder-sources');
 const sources = new Sources();
 
-const articleModel = require('../services/news-service');
+const articleService = require('../services/news-service');
+const sourceService = require('../services/source-service');
+
+const articleModel = require('../models/article-model');
+const sourceModel = require('../models/source-model');
+
 
 const moment = require('moment');
 const newsapi = require('../secrets');
@@ -32,6 +37,30 @@ class Seeder {
     }
   }
 
+  async createRelationArticlesToSource() {
+    const articles = await articleService.findAll();
+    const sources = await sourceService.findAll();
+
+    for (let article of articles) {
+      const sourceDb = await sourceModel.findOne({ 'name': article.source.name });
+
+      sourceDb.articles.push(article);
+      await sourceDb.save();
+    }
+  }
+
+  async createRelationSourceToArticle() {
+    const articles = await articleService.findAll();
+    const sources = await sourceService.findAll();
+
+    for (let article of articles) {
+      let sourceDb = await sourceModel.findOne({ 'name': article.source.name });
+
+      article.sources = sourceDb;
+      await article.save();
+    }
+  }
+
   async seedNews() {
     const sourcePacks = await sources.createSourcePacks();
     const date = {
@@ -53,6 +82,14 @@ class Seeder {
       for (let article of articles) {
         await articleModel.add(article);
       }
+    }
+  }
+
+  async displaySourceContent() {
+    const sources = await sourceService.findAll();
+
+    for (let source of sources) {
+      console.log(source);
     }
   }
 }

@@ -33,5 +33,11 @@ app.listen(3030, () => {
 
 // sources.seedSources();
 // seeder.starterSeed();
+// seeder.createRelations();
+
+// seeder.createRelationSourceToArticle();
+
+// seeder.displaySourceContent();
+
 
 // scheduler.scheduleJob('0 0 * * *', () => { seeder.seedNews() })
