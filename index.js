@@ -31,4 +31,7 @@ app.listen(3030, () => {
   console.log('Server listening...');
 });
 
-scheduler.scheduleJob('0 0 * * *', () => { seeder.seedNews() })
+// sources.seedSources();
+// seeder.starterSeed();
+
+// scheduler.scheduleJob('0 0 * * *', () => { seeder.seedNews() })

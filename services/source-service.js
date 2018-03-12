@@ -4,16 +4,16 @@ async function findAll() {
   return Source.find();
 }
 
-async function find(id) {
-  return Source.findOne({ id });
+async function find(sourceId) {
+  return Source.findOne({ sourceId });
 }
 
 async function add(article) {
   return Source.create(article);
 }
 
-async function del(id) {
-  return Source.remove({ id });
+async function del(sourceId) {
+  return Source.remove({ sourceId });
 }
 
 module.exports = {

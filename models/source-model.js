@@ -9,7 +9,8 @@ const sourceSchema = new Schema({
   url: String,
   category: String,
   language: String,
-  country: String
+  country: String,
+  articles: [{ type: Schema.Types.ObjectId, ref: 'Article' }]
 });
 
 sourceSchema.plugin(AutoIncrement, { inc_field: 'sourceId' });

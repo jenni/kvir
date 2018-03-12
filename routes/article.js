@@ -12,19 +12,19 @@ router.get('/all', async (req, res, next) => {
   res.render('article-all', { articles })
 });
 
-router.get('/:id', async (req, res, next) => {
-  const article = await NewsService.find(req.params.id);
+router.get('/:articleId', async (req, res, next) => {
+  const article = await NewsService.find(req.params.articleId);
   res.render('article-detail', { article });
-})
+});
 
 router.post('/', async (req, res, next) => {
   const article = await NewsService.add(req.body);
   res.send(article);
 });
 
-router.delete('/:id', async (req, res, next) => {
-  await NewsService.del(req.params.id);
+router.delete('/:articleId', async (req, res, next) => {
+  await NewsService.del(req.params.articleId);
   res.send('ok')
-})
+});
 
 module.exports = router;

@@ -4,10 +4,13 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 const Schema = mongoose.Schema;
 
 const articleSchema = new Schema({
-  source: Object,
+  source: {
+    id: String,
+    name: String
+  },
   author: {
     type: String,
-    default: 'anonymous'
+    default: 'unknown'
   },
   title: {
     type: String,
@@ -20,7 +23,11 @@ const articleSchema = new Schema({
   content: String,
   url: String,
   urlToImage: String,
-  publishedAt: Date
+  publishedAt: Date,
+  sources: {
+    type: Schema.Types.ObjectId,
+    ref: 'Source'
+  }
 });
 
 articleSchema.plugin(AutoIncrement, { inc_field: 'articleId' });

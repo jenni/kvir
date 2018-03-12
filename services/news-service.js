@@ -4,16 +4,16 @@ async function findAll() {
   return Article.find();
 }
 
-async function find(id) {
-  return Article.findOne({ id });
+async function find(articleId) {
+  return Article.findOne({ articleId });
 }
 
 async function add(article) {
   return Article.create(article);
 }
 
-async function del(id) {
-  return Article.remove({ id });
+async function del(articleId) {
+  return Article.remove({ articleId });
 }
 
 module.exports = {

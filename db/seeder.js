@@ -1,7 +1,7 @@
 require('./database-connection');
 const mongoose = require('mongoose');
 
-const Sources = require('../models/source-model');
+const Sources = require('./seeder-sources');
 const sources = new Sources();
 
 const articleModel = require('../services/news-service');
@@ -14,17 +14,20 @@ class Seeder {
     const sourcePacks = await sources.createSourcePacks();
 
     for (let pack of sourcePacks) {
-      const res = await newsapi.v2.everything(
-        {
-          sources: pack.toString(),
-          q: 'queer'
+      if (pack.length > 0 && pack.length <= 20) {
+        const res = await newsapi.v2.everything(
+          {
+            sources: pack.toString(),
+            q: 'queer'
+          }
+        )
+
+        const articles = res.articles;
+
+        for (let article of articles) {
+          await articleModel.add(article);
+          console.log(article)
         }
-      )
-
-      const articles = res.articles;
-
-      for (let article of articles) {
-        await articleModel.add(article);
       }
     }
   }
