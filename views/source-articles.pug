@@ -1,2 +1,14 @@
-//- script.
-//-   console.log(!JSON.stringify(articles))
+extends layout
+
+block content
+  h1 All articles by #{source.name}: #{source.articles.length}
+  each article in source.articles
+    strong #{article.title}
+    p #{article.id}
+    p #{article.author}
+    p #{article.description}
+    p #{article.source}
+    p #{article.articleId}
+    p #{article.url}
+    p #{article.urlToImage}
+    p #{article.publishedAt}

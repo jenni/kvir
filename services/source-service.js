@@ -5,7 +5,7 @@ async function findAll() {
 }
 
 async function find(sourceId) {
-  return Source.findOne({ sourceId });
+  return Source.findOne({ sourceId }).populate('articles');
 }
 
 async function add(article) {

@@ -25,13 +25,12 @@ class Seeder {
             sources: pack.toString(),
             q: 'queer'
           }
-        )
+        );
 
         const articles = res.articles;
 
         for (let article of articles) {
           await articleModel.add(article);
-          console.log(article)
         }
       }
     }
@@ -82,14 +81,6 @@ class Seeder {
       for (let article of articles) {
         await articleModel.add(article);
       }
-    }
-  }
-
-  async displaySourceContent() {
-    const sources = await sourceService.findAll();
-
-    for (let source of sources) {
-      console.log(source);
     }
   }
 }

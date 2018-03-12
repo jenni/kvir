@@ -19,7 +19,9 @@ router.get('/:sourceId', async (req, res, next) => {
 });
 
 router.get('/:sourceId/articles', async (req, res, next) => {
-  const articlesBySource = await SourceService.find()
+  const source = await SourceService.find(req.params.sourceId);
+
+  res.render('source-articles', { source });
 });
 
 router.post('/', async (req, res, next) => {
@@ -41,6 +43,6 @@ router.post('/:sourceId/articles', async (req, res, next) => {
 router.delete('/:articleId', async (req, res, next) => {
   await SourceService.del(req.params.articleId);
   res.send('ok');
-})
+});
 
 module.exports = router;
