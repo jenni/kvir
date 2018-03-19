@@ -4,7 +4,7 @@
   "description": "Queer news over the world",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed": "node db/seed.js"
   },
   "author": "Jen",
   "license": "MIT",

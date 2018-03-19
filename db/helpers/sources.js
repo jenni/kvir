@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-const newsapi = require('../secrets');
+const newsapi = require('../../secrets');
 
-const sourceModel = require('../services/source-service');
+const sourceModel = require('../../services/source-service');
 
 class Sources {
   async getSourceNames() {
@@ -26,16 +26,6 @@ class Sources {
     const all = [one, two, three, four, five, six, seven];
 
     return all;
-  }
-
-  async seedSources() {
-    const res = await newsapi.v2.sources();
-    const sources = res.sources;
-
-    for (let source of sources) {
-      await sourceModel.add(source);
-    }
-
   }
 }
 
