@@ -7,7 +7,7 @@ _******UNDER CONSTRUCTION******_
 
 ...meanwhile, get a taste from your console:
 
-`$ node index.js`
+`$ npm start`
 
 
 ### Featured:

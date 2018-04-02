@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
 const scheduler = require('node-schedule');
-require('./db/database-connection');
+
+const port = process.env.PORT || 3030;
+const app = express();
 
 app.use(bodyParser.json());
 
@@ -21,7 +21,7 @@ app.get('/', (req, res, next) => {
   res.render('index');
 });
 
-app.listen(3030, () => {
+app.listen(port, () => {
   console.log('Server up on port 3030...');
 });
 
