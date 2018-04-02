@@ -10,7 +10,7 @@ _******UNDER CONSTRUCTION******_
 `$ node index.js`
 
 
-### News sources:
+### Featured:
 
 ```
  "ABC News",

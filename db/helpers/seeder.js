@@ -12,20 +12,6 @@ class Seeder {
     this.sources = sources;
   }
 
-  async createDatabaseRelations() {
-    const articles = await articleModel.find();
-    const sources = await sourceModel.find();
-
-    for (const article of articles) {
-      const sourceDb = await sourceModel.findOne({ 'name': article.source.name });
-
-      article.sources = sourceDb;
-      sourceDb.articles.push(article);
-      await sourceDb.save();
-      await article.save();
-    }
-  }
-
   async seedSources() {
     const res = await newsapi.v2.sources();
     const sources = res.sources;
@@ -56,7 +42,7 @@ class Seeder {
     }
   }
 
-  async seedNews() {
+  async seedNewArticles() {
     const sourcePacks = await this.sources.createSourcePacks();
     const date = {
       yesterday: moment().subtract(1, 'day').format('YYYY-MM-DD'),
@@ -79,6 +65,21 @@ class Seeder {
       }
     }
   }
+
+  async createDatabaseRelations() {
+    const articles = await articleModel.find();
+    const sources = await sourceModel.find();
+
+    for (const article of articles) {
+      const sourceDb = await sourceModel.findOne({ 'name': article.source.name });
+
+      article.sources = sourceDb;
+      sourceDb.articles.push(article);
+      await sourceDb.save();
+      await article.save();
+    }
+  }
+
 }
 
 module.exports = Seeder;

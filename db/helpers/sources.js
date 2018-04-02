@@ -1,12 +1,8 @@
-const fs = require('fs');
-
-const newsapi = require('../../secrets');
-
-const sourceModel = require('../../services/source-service');
+const sourceModel = require('../../models/source-model');
 
 class Sources {
   async getSourceNames() {
-    const sources = await sourceModel.findAll();
+    const sources = await sourceModel.find();
     const names = sources.map(source => source.name);
 
     return names;
