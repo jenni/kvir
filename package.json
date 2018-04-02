@@ -4,7 +4,8 @@
   "description": "Queer news over the world",
   "main": "index.js",
   "scripts": {
-    "seed": "node db/seed.js"
+    "seed": "node db/seed.js",
+    "start": "node server.js"
   },
   "author": "Jen",
   "license": "MIT",
