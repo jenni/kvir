@@ -9,6 +9,11 @@ _******UNDER CONSTRUCTION******_
 
 `$ npm start`
 
+#### Seed db with last 3 months' articles:
+
+`$ npm run-script seed`
+
+
 
 ### Featured:
 

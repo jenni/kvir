@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const scheduler = require('node-schedule');
 
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log('Server up on port 3030...');
+  console.log(`Server up on port ${port}...`);
 });
 
 // scheduler.scheduleJob('0 0 * * *', () => { seeder.seedNews() })
