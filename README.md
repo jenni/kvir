@@ -9,6 +9,13 @@ _******UNDER CONSTRUCTION******_
 
 `$ node index.js`
 
+#### Seed heroku db
+
+```
+$ heroku run node db/seed.js
+```
+
+
 
 ### Featured:
 
