@@ -5,7 +5,7 @@ const articleModel = require('../../models/article-model');
 const sourceModel = require('../../models/source-model');
 
 const moment = require('moment');
-const newsapi = require('../../secrets');
+const newsapi = require('../../config');
 
 class Seeder {
   constructor(sources) {
