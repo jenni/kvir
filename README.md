@@ -11,6 +11,10 @@ _******UNDER CONSTRUCTION******_
 
 #### Seed heroku db
 
+* Set Heroku environment key:
+
+`$ heroku config:set NEWS_API_KEY='key_here'`
+
 ```
 $ heroku run node db/seed.js
 ```
