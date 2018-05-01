@@ -4,7 +4,7 @@
   "description": "Queer news over the world",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "seed": "node db/seed.js"
   },
   "engines": {
