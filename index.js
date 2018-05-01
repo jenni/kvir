@@ -1,13 +1,14 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
 const scheduler = require('node-schedule');
+
 require('./db/database-connection');
 
-app.use(bodyParser.json());
+const app = express();
+const port = process.env.PORT || 3000;
 
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.set('view engine', 'pug');
 
@@ -21,8 +22,8 @@ app.get('/', (req, res, next) => {
   res.render('index');
 });
 
-app.listen(3030, () => {
-  console.log('Server up on port 3030...');
+app.listen(3000, () => {
+  console.log(`Server up on port ${port}...`);
 });
 
 // scheduler.scheduleJob('0 0 * * *', () => { seeder.seedNews() })

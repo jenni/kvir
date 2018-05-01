@@ -1,0 +1,4 @@
+node_modules
+secrets.js
+.DS_Store
+data
