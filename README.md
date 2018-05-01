@@ -13,7 +13,13 @@ _******UNDER CONSTRUCTION******_
 
 `$ npm run-script seed`
 
+#### Seed heroku db:
 
+```
+$ heroku config
+> mongodb://user:pass@host:port/db
+$ mongo host:port/db -u user -p pass db/seed.js
+```
 
 ### Featured:
 
