@@ -1,3 +1,4 @@
+const NewsAPI = require('newsapi');
 const Sources = require('./sources');
 const sources = new Sources();
 
@@ -5,7 +6,7 @@ const articleModel = require('../../models/article-model');
 const sourceModel = require('../../models/source-model');
 
 const moment = require('moment');
-const newsapi = require('../../secrets');
+const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 
 class Seeder {
   constructor(sources) {

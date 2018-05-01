@@ -9,11 +9,41 @@ _******UNDER CONSTRUCTION******_
 
 `$ node index.js`
 
-#### Seed heroku db
+### Seeding
+
+`dotenv` library is used to manage environment variables.
+
+The entry file (`index.js`) will recognise the environment the app is being executed in:
 
 ```
-$ heroku run node db/seed.js
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
 ```
+
+After creating a Heroku app, an mLab (mongodb) database needs to be associated:
+
+`$ heroku addons:create mongolab:sandbox`
+
+**Development:**
+
+* Save your `newsAPI` key in an `.env` file in the root of the project.
+
+`NEWS_API_KEY='your_key_here'`
+
+Seed the local database:
+
+`$ npm run-script seed`
+
+**Production:**
+
+* Set the Heroku environment key for the `newsAPI`:
+
+`$ heroku config:set NEWS_API_KEY='you_key_here'`
+
+Seed the Heroku database:
+
+`$ heroku run node db/seed.js`
 
 
 
