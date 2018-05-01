@@ -1,1 +1,5 @@
 node_modules
+secrets.js
+.gitignore
+data/sourceNames.json
+data
