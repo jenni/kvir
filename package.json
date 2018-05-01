@@ -8,7 +8,7 @@
     "seed": "node db/seed.js"
   },
   "engines": {
-    "node": ">= 7.6.0"
+    "node": "8.11.1"
   },
   "author": "Jen",
   "license": "MIT",
